@@ -23,8 +23,9 @@
 <div id="gallery"></div>
 
 <script>
-  // Function to fetch images from a folder
-  function fetchImages(folderPath) {
+  // Function to fetch images from the same folder as the HTML file
+  function fetchImages() {
+    const folderPath = '.';
     fetch(folderPath)
       .then(response => response.text())
       .then(text => {
@@ -45,12 +46,8 @@
       .catch(error => console.error('Error fetching images:', error));
   }
 
-  // Get the current directory path
-  const currentPath = window.location.pathname;
-  // Remove the filename from the path to get the directory path
-  const folderPath = currentPath.substring(0, currentPath.lastIndexOf('/'));
-  // Call the function to fetch images from the current directory
-  fetchImages(folderPath);
+  // Call the function to fetch images from the same folder as the HTML file
+  fetchImages();
 
 </script>
 
