@@ -1,8 +1,293 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <title>Portfolio</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap');
+  
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #eee;
+    }
+  
+    .header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+  
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+  
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+  
+    .header p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #aaa;
+      margin-top: 0.5rem;
+    }
+  
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 20px;
+      padding: 1rem;
+      max-width: 1400px;
+      margin: auto;
+    }
+  
+    .project {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #1a1a1a;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      cursor: pointer;
+      border-radius: 10px;
+    }
+  
+    .project img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      overflow-y: auto;
+      z-index: 999;
+      padding: 40px 10px;
+    }
+  
+    .modal-content {
+      background: #222;
+      margin: auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 1000px;
+      position: relative;
+      border-radius: 10px;
+      color: #eee;
+    }
+  
+    .close {
+      position: absolute;
+      top: 10px; right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  
+    .modal-images img {
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+  
+    .modal-images .caption {
+      font-size: 1rem;
+      margin: 10px 0 20px;
+      color: #ccc;
+    }
+  </style>
+
+</head>
 <body>
-<h1>HISTORY 2 BTEST NOTES</h1>
-<p>click on this link to access my notes</p>
-<a href="page2.html">NOTES</a>
+  <div class="header">
+    <img src="images/logo.png" alt="Logo" class="logo">
+    <h1>Nicco3D</h1>
+    <p>Automotive Specialised 3D Modeling & Rendering Services</p>
+  </div>
+
+  <div class="grid" id="portfolio"></div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" id="close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <div class="modal-images" id="modal-images"></div>
+    </div>
+  </div>
+
+  <script>
+    function toggleDark() {
+      document.documentElement.classList.toggle("dark-mode");
+    }
+    const projects = [
+  {
+    name: "Nissan Silva S15",
+    thumbnail: "images/s15/s15 (1).png",
+    content: [
+      "images/s15/s15 (1).png",
+      "images/s15/s15 (2).png",
+      "test text",
+      "images/s15/s15 (3).png",
+      "images/s15/s15 (4).png",
+      "images/s15/s15 (5).png",
+      "images/s15/s15 (6).png",
+      "images/s15/s15 (7).png",
+      "images/s15/s15 (8).png",
+      "images/s15/s15 (9).png",
+      "images/s15/s15 (10).png",
+      "images/s15/s15 (11).png",
+      "images/s15/s15 (12).png",
+      "images/s15/s15 (13).png",
+      "images/s15/s15 (14).png",
+      "images/s15/s15 (15).png",
+      "images/s15/s15 (16).png",
+      "images/s15/s15 (17).png",
+      "images/s15/s15 (18).png",
+      "images/s15/s15 (19).png",
+      "images/s15/s15 (20).png",
+      "images/s15/s15 (21).png",
+      "images/s15/s15 (22).png",
+    ]
+  },
+  {
+    name: "Toyota Soarer Z20",
+    thumbnail: "images/z20/z20 (2).png",
+    content: [
+      "images/z20/z20 (1).png",
+      "images/z20/z20 (2).png",
+      "images/z20/z20 (3).png",
+      "images/z20/z20 (4).png",
+      "images/z20/z20 (5).png",
+    ]
+  },
+  {
+    name: "Nissan Silvia S13 Rear Suspension",
+    thumbnail: "images/s13_axle/s13_axle (5).png",
+    content: [
+      "images/s13_axle/s13_axle (1).png",
+      "images/s13_axle/s13_axle (2).png",
+      "images/s13_axle/s13_axle (3).png",
+      "images/s13_axle/s13_axle (4).png",
+      "images/s13_axle/s13_axle (5).png",
+      "images/s13_axle/s13_axle (6).png",
+      "images/s13_axle/s13_axle (7).png",
+      "images/s13_axle/s13_axle (8).png",
+      "images/s13_axle/s13_axle (9).png",
+      "images/s13_axle/s13_axle (10).png"
+    ]
+  },
+  {
+    name: "Subaru Impreza GC8",
+    thumbnail: "images/gc8/gc8 (11).png",
+    content: [
+      "images/gc8/gc8 (1).png",
+      "images/gc8/gc8 (2).png",
+      "images/gc8/gc8 (3).png",
+      "images/gc8/gc8 (4).png",
+      "images/gc8/gc8 (5).png",
+      "images/gc8/gc8 (6).png",
+      "images/gc8/gc8 (7).png",
+      "images/gc8/gc8 (8).png",
+      "images/gc8/gc8 (9).png",
+      "images/gc8/gc8 (10).png",
+      "images/gc8/gc8 (11).png"
+    ]
+  },
+  {
+    name: "Gato Performance K20 Engine Manifold",
+    thumbnail: "images/gato_manifold/gato_manifold (1).png",
+    content: [
+      "images/gato_manifold/gato_manifold (1).png",
+      "images/gato_manifold/gato_manifold (2).png",
+      "images/gato_manifold/gato_manifold (3).png"
+    ]
+  },
+  {
+    name: "Nissan Silvia S15 Factory O.Z Racing Wheel",
+    thumbnail: "images/oz/oz (2).png",
+    content: [
+      "images/oz/oz (1).png",
+      "images/oz/oz (2).png",
+      "images/oz/oz (3).png"
+    ]
+  },
+  {
+    name: "Toyota AE86 Sprinter Trueno",
+    thumbnail: "images/ae86/ae86 (2).png",
+    content: [
+      "images/ae86/ae86 (1).png",
+      "images/ae86/ae86 (2).png",
+      "images/ae86/ae86 (3).png"
+    ]
+  },
+  {
+    name: "Fictional Bucket-Wheel Excavator",
+    thumbnail: "images/excavator/excavator (4).png",
+    content: [
+      "images/excavator/excavator (1).png",
+      "images/excavator/excavator (2).png",
+      "images/excavator/excavator (3).png",
+      "images/excavator/excavator (4).png",
+    ]
+  },
+  {
+    name: "All-Purpose Cleaner Spray Bottle",
+    thumbnail: "images/spray/spray (4).png",
+    content: [
+      "images/spray/spray (1).png",
+      "images/spray/spray (2).png",
+      "images/spray/spray (3).png",
+      "images/spray/spray (4).png",
+    ]
+  }
+];
+
+    const portfolio = document.getElementById('portfolio');
+    projects.forEach(project => {
+      const div = document.createElement('div');
+      div.className = 'project';
+      div.innerHTML = `
+        <img src="${project.thumbnail}" alt="${project.name} thumbnail">
+        <div>${project.name}</div>
+      `;
+      div.onclick = () => {
+        document.getElementById('modal-title').innerText = project.name;
+        const container = document.getElementById('modal-images');
+        container.innerHTML = '';
+
+        project.content.forEach(item => {
+          if (typeof item === 'string' && item.endsWith('.png')) {
+            const img = document.createElement('img');
+            img.src = item;
+            container.appendChild(img);
+          } else {
+            const text = document.createElement('div');
+            text.className = 'caption';
+            text.innerText = item;
+            container.appendChild(text);
+          }
+        });
+
+        document.getElementById('modal').style.display = 'block';
+      };
+      portfolio.appendChild(div);
+    });
+
+    document.getElementById('close').onclick = () => {
+      document.getElementById('modal').style.display = 'none';
+    };
+    window.onclick = (e) => {
+      if (e.target == document.getElementById('modal')) {
+        document.getElementById('modal').style.display = 'none';
+      }
+    };
+  </script>
 </body>
 </html>
