@@ -461,27 +461,41 @@
       portfolio.appendChild(div);
     });
 
-      const modal = document.getElementById('modal');
+    const modal = document.getElementById('modal');
 
-      function openModal() {
-        modal.style.display = 'flex';
-        document.body.classList.add('modal-open');
+    function openModal() {
+      modal.style.display = 'flex';
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+      // Reset any iframes if needed:
+      document.querySelectorAll('#modal iframe').forEach(iframe => iframe.src = iframe.src);
+    }
+
+    // Bind close action to the close button
+    document.getElementById('close').onclick = closeModal;
+
+    // Listen for clicks/touch events on the modal background only
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+        e.stopPropagation();
       }
+    });
 
-      function closeModal() {
-        modal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        // Reset any iframes if needed:
-        document.querySelectorAll('#modal iframe').forEach(iframe => iframe.src = iframe.src);
+    modal.addEventListener('touchend', (e) => {
+      if (e.target === modal) {
+        closeModal();
+        e.stopPropagation();
       }
+    });
 
-      // Example: Binding to your close button and modal click
-      document.getElementById('close').onclick = closeModal;
-      window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-      window.addEventListener('touchend', (e) => { if (e.target === modal) closeModal(); });
+    // Remove the redundant openModal listener on the portfolio container
+    // Each project item already opens the modal on click.
 
-      // When opening the modal (e.g., by clicking on a portfolio item), call openModal()
-      portfolio.addEventListener('click', openModal);
 </script>
 
   </script>
