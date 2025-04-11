@@ -6,7 +6,12 @@
   <link rel="icon" href="images/logo.png" type="image/png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap');
-  
+    
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
@@ -103,14 +108,43 @@
       margin: 10px 0 20px;
       color: #ccc;
     }
+    .footer {
+      background: #111;
+      color: #aaa;
+      display: flex;
+      flex-direction: column;  /* Stack items vertically */
+      justify-content: center; /* Center the content vertically */
+      align-items: center;     /* Center the content horizontally */
+      padding: 30px;
+      font-size: 0.9rem;
+      position: relative;
+      width: 100%;
+      max-width: 1400px; /* Align the footer with the max width of your thumbnails */
+      margin: auto;  /* Center the footer */
+      box-sizing: border-box;  /* Make sure padding doesn't affect the layout */
+    }
+
+    .footer .contact-link {
+      text-align: left;
+      color: #aaa;
+      text-decoration: none;
+      margin-bottom: 30px;  /* Add space below the contact link */
+    }
+
+    .footer .contact-link:hover {
+      color: #fff;
+    }
   </style>
 
 </head>
 <body>
+
   <div class="header">
-    <img src="images/logo.png" alt="Logo" class="logo">
-    <h1>Nicco3D</h1>
-    <p>Automotive Specialised 3D Modeling & Rendering Services</p>
+    <a href="index.html">
+      <img src="images/logo.png" alt="Logo" class="logo">
+      <h1>Nicco3D</h1>
+      <p>Automotive Specialised 3D Modeling & Rendering Services</p>
+    </a>
   </div>
 
   <div class="grid" id="portfolio"></div>
@@ -123,6 +157,11 @@
     </div>
   </div>
 
+  <footer class="footer">
+    <a href="contact.html" class="contact-link">Contact Info</a>
+    <div>© Nicco3D 2025. All the trademarks, brands and logos are the property of their respective owners.</div>
+  </footer>
+  
   <script>
     function toggleDark() {
       document.documentElement.classList.toggle("dark-mode");
@@ -132,9 +171,9 @@
     name: "Subaru Impreza GC8",
     thumbnail: "images/gc8/gc8 (11).png",
     content: [
-      "Modeled in Blender 3D, textured in Blender 3D & Adobe Substance Painter",
-      "Subdivision/turbosmooth workflow (adaptive triangle count), one 4K texture set",
-      "Exterior shell is not made by me, I am responsible for the interior, headlights & taillights",
+      "Modeled in Blender 3D, textured in Blender 3D & Adobe Substance Painter.",
+      "Subdivision/turbosmooth workflow (adaptive triangle count), one 4K texture set.",
+      "Exterior shell is not made by me, I am responsible for the interior, headlights & taillights.",
       { type: "label", text: "Interior"},
       "images/gc8/gc8 (11).png",
       "images/gc8/gc8 (7).png",
@@ -151,7 +190,7 @@
       { type: "label", text: "Taillights"},
       "images/gc8/gc8 (3).png",
       "images/gc8/gc8 (2).png",
-      "Model created for <i> Touge Attack </i> by HighVision Limited",
+      "Commissioned by HighVision Limited for <i> Touge Attack </i>:",
       { type: "youtube", embed: "https://www.youtube.com/embed/MpievwbPmvI?si=26ob-S11O6Ofycwg" },
     ]
   },
@@ -159,8 +198,8 @@
     name: "Toyota Soarer Z20",
     thumbnail: "images/z20/z20 (2).png",
     content: [
-      "~100k triangles, modeled, textured & rendered with Blender 3D",
-      "Personal project, modeled from scratch",
+      "~100k triangles, modeled, textured & rendered with Blender 3D.",
+      "Personal project, modeled from scratch.",
       "images/z20/z20 (2).png",
       "images/z20/z20 (1).png",
       "images/z20/z20 (3).png",
@@ -172,9 +211,9 @@
     name: "Nissan Silvia S13 Rear Suspension",
     thumbnail: "images/s13_axle/s13_axle (5).png",
     content: [
-      "Modeled & textured in Blender 3D, adaptable triangle count with multiple LODs",
-      "Accurate within ±1cm, modeled from scratch based off references from the internet",
-      "Built for a non-commercial modding project",
+      "Modeled & textured in Blender 3D, adaptable triangle count with multiple LODs.",
+      "Accurate within ±1cm, modeled from scratch based off references from the internet.",
+      "Built for a non-commercial modding project.",
       { type: "youtube", embed: "https://www.youtube.com/embed/sKb3yc5iow0?si=N1UXbx2eJrEZIyok" },
       "images/s13_axle/s13_axle (2).png",
       "images/s13_axle/s13_axle (6).png",
@@ -188,10 +227,10 @@
     name: "Nissan Silva S15",
     thumbnail: "images/s15/s15 (1).png",
     content: [
-      "Made using Blender 3D, Adobe Substance Painter, Autodesk Image Modeler & 3DF Zephyr",
-      "Approximately ~100k triangles after baking",
-      "Created as a personal modding project for BeamNG.drive",
-      "Ongoing work, some parts may not be up to standard",
+      "Made using Blender 3D, Adobe Substance Painter, Autodesk Image Modeler & 3DF Zephyr.",
+      "Approximately ~100k triangles after baking.",
+      "Created as a personal modding project for BeamNG.drive.",
+      "Ongoing work, some parts may not be up to standard.",
       { type: "label", text: "Exterior"},
       "images/s15/s15 (1).png",
       "images/s15/s15 (2).png",
@@ -227,8 +266,8 @@
     name: "Gato Performance K20 Engine Manifold",
     thumbnail: "images/gato_manifold/gato_manifold (1).png",
     content: [
-      "~5k triangles, modeled and textured in Blender 3D",
-      "Modeled for private commission",
+      "~5k triangles, modeled and textured in Blender 3D.",
+      "Modeled for private commission.",
       "images/gato_manifold/gato_manifold (1).png",
       "images/gato_manifold/gato_manifold (2).png",
       "images/gato_manifold/gato_manifold (3).png"
@@ -238,8 +277,7 @@
     name: "Nissan Silvia S15 Factory O.Z Racing Wheel",
     thumbnail: "images/oz/oz (2).png",
     content: [
-      "~2.5k triangles",
-      "Personal project",
+      "~2.5k triangles, personal project.",
       "images/oz/oz (2).png",
       "images/oz/oz (3).png",
       "images/oz/oz (1).png",
@@ -249,8 +287,8 @@
     name: "Toyota AE86 Sprinter Trueno",
     thumbnail: "images/ae86/ae86 (2).png",
     content: [
-      "~3.5k Triangles, Modeled in Blender 3D",
-      "4 hours total work time, personal project",
+      "~3.5k Triangles, Modeled in Blender 3D.",
+      "4 hours total work time, personal project.",
       "images/ae86/ae86 (1).png",
       "images/ae86/ae86 (2).png",
       "images/ae86/ae86 (3).png"
@@ -260,8 +298,8 @@
     name: "Fictional Bucket-Wheel Excavator",
     thumbnail: "images/excavator/excavator (4).png",
     content: [
-      "Modeled and Rendered in Blender 3D",
-      "Created for Futurist Games Brussels",
+      "Modeled and Rendered in Blender 3D.",
+      "Created for Futurist Games Brussels.",
       "images/excavator/excavator (1).png",
       "images/excavator/excavator (2).png",
       "images/excavator/excavator (3).png",
@@ -273,8 +311,8 @@
     thumbnail: "images/spray/spray (4).png",
     content: [
       "Personal project",
-      "Subdivision/turbosmooth workflow",
-      "Modeled and textured with Blender 3D",
+      "Subdivision/turbosmooth workflow.",
+      "Modeled and textured with Blender 3D.",
       "images/spray/spray (1).png",
       "images/spray/spray (2).png",
       "images/spray/spray (3).png",

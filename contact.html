@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Contact Info</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap');
+  
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #eee;
+    }
+  
+    .header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+  
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+  
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+  
+    .header p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #aaa;
+      margin-top: 0.5rem;
+    }
+  
+    .footer {
+      background: #111;
+      color: #aaa;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      position: relative;
+      width: 100%;
+      max-width: 1400px;
+      margin: auto;
+      box-sizing: border-box;
+    }
+
+    .footer .contact-link {
+      text-align: left;
+      color: #aaa;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    .footer .contact-link:hover {
+      color: #fff;
+    }
+
+    .social-media {
+      display: flex;
+      flex-direction: column; /* Vertical alignment */
+      align-items: center; /* Center the links */
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-media a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+
+    .social-media a:hover {
+      color: #fff;
+    }
+
+    .social-media .info {
+      color: #bbb;
+      font-size: 1rem;
+      margin-top: 5px; /* Space between link and text */
+    }
+
+    .social-media .social-item {
+      text-align: center; /* Center each block of link and info */
+    }
+  </style>
+</head>
+<body>
+   <div class="header">
+        <a href="index.html">
+          <img src="images/logo.png" alt="Logo" class="logo">
+          <h1>Nicco3D</h1>
+        </a>
+      </div>
+
+  <!-- Social Media Section -->
+  <div class="social-media">
+    <div class="social-item">
+        <a href="mailto:fz.nicco@gmail.com" target="_blank">Email</a>
+        <div class="info">fz.nicco@gmail.com</div>
+      </div>
+    <div class="social-item">
+      <a href="https://www.instagram.com/nicco3d" target="_blank">Instagram</a>
+      <div class="info">@Nicco3D</div>
+    </div>
+    <div class="social-item">
+      <a href="https://www.youtube.com/@brickolo_" target="_blank">Youtube</a>
+      <div class="info">@Brickolo_</div>
+    </div>
+    <div class="social-item">
+      <a href="https://discordapp.com/users/698119269690507265" target="_blank">Discord</a>
+      <div class="info">@brickolo</div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="index.html" class="contact-link">Return to main page</a>
+  </footer>
+</body>
+</html>
