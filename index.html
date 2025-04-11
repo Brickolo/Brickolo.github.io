@@ -477,7 +477,11 @@
     // Example: Binding to your close button and modal click
     document.getElementById('close').onclick = closeModal;
     window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    //window.addEventListener('touchend', (e) => { if (e.target === modal) closeModal(); });
+    window.addEventListener('touchend', (e) => { 
+      if (e.target === modal) {
+        setTimeout(() => closeModal(), 50); // Delay slightly to avoid conflict
+      }
+    });
 
     // When opening the modal (e.g., by clicking on a portfolio item), call openModal()
     portfolio.addEventListener('click', openModal);
