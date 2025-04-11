@@ -461,32 +461,29 @@
       portfolio.appendChild(div);
     });
 
-    document.getElementById('close').onclick = () => {
-      document.getElementById('modal').style.display = 'none';
-      const iframes = document.querySelectorAll('#modal iframe');
-      iframes.forEach(iframe => {
-        iframe.src = iframe.src;
-  });
-    };
-    window.addEventListener('click', (e) => {
-      if (e.target == document.getElementById('modal')) {
-        document.getElementById('modal').style.display = 'none';
-        const iframes = document.querySelectorAll('#modal iframe');
-        iframes.forEach(iframe => {
-          iframe.src = iframe.src;
-        });
-      }
-    });
+      const modal = document.getElementById('modal');
 
-    window.addEventListener('touchend', (e) => {
-      if (e.target == document.getElementById('modal')) {
-        document.getElementById('modal').style.display = 'none';
-        const iframes = document.querySelectorAll('#modal iframe');
-        iframes.forEach(iframe => {
-          iframe.src = iframe.src;
-        });
+      function openModal() {
+        modal.style.display = 'flex';
+        document.body.classList.add('modal-open');
       }
-    });
+
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+        // Reset any iframes if needed:
+        document.querySelectorAll('#modal iframe').forEach(iframe => iframe.src = iframe.src);
+      }
+
+      // Example: Binding to your close button and modal click
+      document.getElementById('close').onclick = closeModal;
+      window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+      window.addEventListener('touchend', (e) => { if (e.target === modal) closeModal(); });
+
+      // When opening the modal (e.g., by clicking on a portfolio item), call openModal()
+      portfolio.addEventListener('click', openModal);
+</script>
+
   </script>
 </body>
 </html>
