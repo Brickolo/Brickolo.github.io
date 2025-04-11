@@ -477,9 +477,29 @@
     // Example: Binding to your close button and modal click
     document.getElementById('close').onclick = closeModal;
     window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    window.addEventListener('touchend', (e) => { 
-      if (e.target === modal) {
-        setTimeout(() => closeModal(), 50); // Delay slightly to avoid conflict
+    let startX, startY, isTap = true;
+
+    window.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      startX = touch.pageX;
+      startY = touch.pageY;
+      isTap = true;  // Assume it's a tap unless proven otherwise
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      const touch = e.touches[0];
+      const diffX = Math.abs(touch.pageX - startX);
+      const diffY = Math.abs(touch.pageY - startY);
+
+      // If the finger moves too far (e.g., more than 10px in any direction), it's a swipe/scroll
+      if (diffX > 10 || diffY > 10) {
+        isTap = false;  // It's not a tap anymore
+      }
+    });
+
+    window.addEventListener('touchend', (e) => {
+      if (isTap && e.target === modal) {
+        setTimeout(() => closeModal(), 50);  // Delay to avoid conflicts
       }
     });
 
