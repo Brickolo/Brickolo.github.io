@@ -581,7 +581,7 @@
     projects.forEach((project, index) => {
       const div = document.createElement('div');
       div.className = 'project';
-      div.style.animationDelay = `${index * 100}ms`;
+      div.style.animationDelay = `${index * 200}ms`;
       div.innerHTML = `
         <img src="${project.thumbnail}" alt="${project.name} thumbnail">
         <div>${project.name}</div>
