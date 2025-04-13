@@ -268,6 +268,29 @@
     .modal-images img {
       cursor: zoom-in;
     }
+    .modal-images img {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .modal-images img.loaded {
+      opacity: 1;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project {
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
+    }
     @media (max-width: 500px) {
       .logo {
         width: 90px;
@@ -555,9 +578,10 @@
     
     // Portfolio grid generation
     const portfolio = document.getElementById('portfolio');
-    projects.forEach(project => {
+    projects.forEach((project, index) => {
       const div = document.createElement('div');
       div.className = 'project';
+      div.style.animationDelay = `${index * 100}ms`;
       div.innerHTML = `
         <img src="${project.thumbnail}" alt="${project.name} thumbnail">
         <div>${project.name}</div>
@@ -571,6 +595,7 @@
           if (typeof item === 'string' && item.endsWith('.png')) {
             const img = document.createElement('img');
             img.src = item;
+            img.onload = () => img.classList.add('loaded');
             img.addEventListener('click', function(e) {
               e.stopPropagation(); // Prevent triggering modal close
               openFullscreen(this.src);
