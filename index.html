@@ -7,10 +7,10 @@
   <link rel="icon" href="images/logo.png" type="image/png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap');
-    
+
     a {
-        color: inherit;
-        text-decoration: none;
+      color: inherit;
+      text-decoration: none;
     }
 
     body::before {
@@ -35,18 +35,47 @@
       background: linear-gradient(to bottom right, #00080a, #0b031d, #060000);
       color: #eee;
     }
-    
-  
+
+    .top-navigation {
+      display: flex;
+      justify-content: center; /* Center the buttons horizontally */
+      padding: 1rem 0;
+      position: absolute; /* Changed from sticky to absolute */
+      top: 0;
+      left: 0; /* Align to the left edge */
+      width: 100%; /* Make it span the entire width */
+      z-index: 10; /* Ensure it's above other content */
+    } 
+
+    .top-navigation a {
+      color: #eee;
+      padding: 0.75rem 1.5rem;
+      margin: 0 0.5rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .top-navigation a:hover {
+      background-color: #333;
+    }
+
+    .top-navigation .current-page {
+      background-color: #555; /* Indicate the current page */
+      font-weight: bold;
+      cursor: default; /* Optional: change cursor to indicate it's not clickable */
+    }
+
     .header {
       text-align: center;
-      padding: 2rem 1rem 1rem;
+      padding: 1rem 1rem 1rem; /* Reduced top padding */
     }
-  
+
     .logo {
       width: 80px;
       margin-bottom: 10px;
+      margin-top: 70px;
     }
-  
+
     .header h1 {
       font-size: 2.5rem;
       font-weight: 600;
@@ -57,14 +86,14 @@
       margin: 0;
       margin-bottom: 20px;
     }
-  
+
     .header p {
       font-size: 1.2rem;
       font-weight: 300;
       color: #aaa;
       margin-top: 0.5rem;
     }
-  
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(337px, 1fr));
@@ -73,7 +102,7 @@
       max-width: 1400px;
       margin: auto;
     }
-  
+
     .project {
       aspect-ratio: 4 / 3;
       overflow: hidden;
@@ -93,7 +122,7 @@
       border-radius: 10px;
       transition: box-shadow 0.3s ease;
     }
-  
+
     .project img {
       width: 100%;
       height: 100%;
@@ -108,7 +137,7 @@
       object-fit: cover;
       display: block;
     }
-  
+
     .modal {
       display: none;
       position: fixed;
@@ -121,7 +150,7 @@
       justify-content: center;
       align-items: flex-start;
     }
-  
+
     .modal-content {
       background: #222;
       margin: 0 auto;
@@ -135,20 +164,20 @@
       color: #eee;
       margin-bottom: 150px; /* Space between the modal content and the bottom of the page */
     }
-  
+
     .close {
       position: absolute;
       top: 20px; right: 30px;
       font-size: 30px;
       cursor: pointer;
     }
-  
+
     .modal-images img {
       width: 100%;
       margin-bottom: 15px;
       border-radius: 8px;
     }
-  
+
     .modal-images .caption {
       font-size: 1rem;
       margin: 10px 0 20px;
@@ -159,20 +188,20 @@
       display: flex;
       flex-direction: column;  /* Stack items vertically */
       justify-content: center; /* Center the content vertically */
-      align-items: center;     /* Center the content horizontally */
+      align-items: center;    /* Center the content horizontally */
       padding: 20px;
       font-size: 0.9rem;
       position: relative;
       width: 100%;
       max-width: 1400px; /* Align the footer with the max width of your thumbnails */
-      margin: auto;  /* Center the footer */
+      margin: auto;    /* Center the footer */
       box-sizing: border-box;  /* Make sure padding doesn't affect the layout */
     }
     .footer .disclaimer {
       text-align: center;
       color: #aaa;
       text-decoration: none;
-      margin-top: 40px;  /* Add space above the disclaimer */
+      margin-top: 30px;  /* Add space above the disclaimer */
     }
     .footer .contact-link {
       font-size: 2rem;
@@ -254,7 +283,7 @@
       max-width: 100vw;
       max-height: 100vh;
     }
-    
+
     .close-fullscreen {
       position: absolute;
       top: 20px;
@@ -264,7 +293,7 @@
       cursor: pointer;
       z-index: 1001;
     }
-    
+
     .modal-images img {
       cursor: zoom-in;
     }
@@ -315,9 +344,9 @@
         margin: auto;
       }
       .modal-content {
-          width: 75%;
-          padding: 20px;
-          padding-bottom: 90px;
+        width: 75%;
+        padding: 20px;
+        padding-bottom: 90px;
       }
       .close {
         top: 7px; right: 30px;
@@ -331,10 +360,14 @@
 
 </head>
 <body>
-
+  <div class="top-navigation">
+    <a href="/" class="current-page">Portfolio</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </div>
   <div class="header">
-    <a href="/">
-      <img src="images/logo.png" alt="Logo" class="logo">
+    <a>
+      <img href="/" src="images/logo.png" alt="Logo" class="logo">
       <h1>Nicco3D</h1>
       <p>Automotive Specialised 3D Modeling & Rendering Services</p>
     </a>
@@ -344,8 +377,7 @@
 
   <div class="modal" id="modal">
     <div class="modal-content">
-      <div id="modal-top-anchor"></div> <!-- Invisible anchor at top -->
-      <span class="close" id="close">&times;</span>
+      <div id="modal-top-anchor"></div> <span class="close" id="close">×</span>
       <h2 id="modal-title"></h2>
       <div class="modal-images" id="modal-images"></div>
       <a href="#" class="back-to-top">↑ Back to Top</a>
@@ -354,12 +386,10 @@
   </div>
 
   <footer class="footer">
-    <a href="/about" class="contact-link">About</a>
-    <a href="/contact" class="contact-link">Contact Info</a>
     <a href="#" class="back-to-top">↑ Back to Top</a>
     <div class="disclaimer">© Nicco3D 2025. All content is human-made. <br> All the trademarks, brands and logos are the property of their respective owners.</div>
   </footer>
-  
+
   <script>
     const projects = [
       {
@@ -520,11 +550,11 @@
     // Create fullscreen image container
     const fullscreenHTML = `
     <div class="fullscreen-image" id="fullscreen-image">
-      <span class="close-fullscreen" id="close-fullscreen">&times;</span>
+      <span class="close-fullscreen" id="close-fullscreen">×</span>
       <img id="fullscreen-img" src="">
     </div>`;
     document.body.insertAdjacentHTML('beforeend', fullscreenHTML);
-    
+
     // Back to top button functionality
     document.querySelectorAll('.back-to-top').forEach(button => {
       button.addEventListener('click', function (e) {
@@ -541,7 +571,7 @@
         }
       });
     });
-    
+
     // Fullscreen image functions
     function openFullscreen(imgSrc) {
       const fullscreenImg = document.getElementById('fullscreen-img');
@@ -554,7 +584,7 @@
       document.getElementById('fullscreen-image').style.display = 'none';
       document.body.style.overflow = ''; // Restore scrolling
     }
-    
+
     // Set up event listeners for fullscreen mode
     document.getElementById('close-fullscreen').addEventListener('click', closeFullscreen);
     document.getElementById('fullscreen-image').addEventListener('click', function(e) {
@@ -566,7 +596,7 @@
       e.stopPropagation(); // Prevent double triggering with parent click
       closeFullscreen();
     });
-    
+
     // Keyboard support
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
@@ -577,7 +607,7 @@
         }
       }
     });
-    
+
     // Portfolio grid generation
     const portfolio = document.getElementById('portfolio');
     projects.forEach((project, index) => {
@@ -642,7 +672,7 @@
       };
       portfolio.appendChild(div);
     });
-    
+
     // Modal functions
     const modal = document.getElementById('modal');
 
@@ -661,7 +691,7 @@
     // Modal close events
     document.getElementById('close').onclick = closeModal;
     window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    
+
     // Touch handling for mobile
     let startX, startY, isTap = true;
 
